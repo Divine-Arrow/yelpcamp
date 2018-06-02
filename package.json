@@ -1,0 +1,15 @@
+{
+  "name": "yelpcamp",
+  "version": "1.0.0",
+  "description": "This is a app having login credential with a database , this is just do the practice for node,express,database",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bhupender Singh",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.3"
+  }
+}
