@@ -41,6 +41,10 @@ var campgrounds = [
         {
             name: "Mountain Goat's rest",
             image: "https://farm4.staticflickr.com/3060/3021047498_eaab93a32b.jpg"
+        }, 
+        {
+            name: "Mountain Goat's rest",
+            image: "https://farm4.staticflickr.com/3060/3021047498_eaab93a32b.jpg"
         }
 ];
 
