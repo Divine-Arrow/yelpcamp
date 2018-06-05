@@ -21,25 +21,26 @@ var Campground = mongoose.model("Campground", campgroundSchema);
 
 //  adding a campground Data into database
 
-campground.create({
-        name: "Salmon Creek",
-        image: "https://farm4.staticflickr.com/3297/3518227895_339a010a78.jpg"
-    },
-    function (err, addedData) {
-        if (err) {
-            console.log("Something went wrong while CREATING data \n", err);
-        } else {
-            console.log("SUCCESS on CREATING \n", addedData);
-        }
-    });
+// Campground.create({
+//         name: "Salmon Creek",
+//         image: "https://farm4.staticflickr.com/3297/3518227895_339a010a78.jpg",
+//         description: "salmon creek is a awsome place for campground, every second is holding fun here !"
+//     },
+//     function (err, addedData) {
+//         if (err) {
+//             console.log("Something went wrong while CREATING data \n", err);
+//         } else {
+//             console.log("SUCCESS on CREATING \n", addedData);
+//         }
+//     });
 
 
 
 
 
-// app.get("/", function (req, res) {
-//     res.render("landing");
-// });
+app.get("/", function (req, res) {
+    res.render("landing");
+});
 
 // Index route -- to show all campground
 app.get("/campgrounds", function (req, res) {
@@ -58,10 +59,12 @@ app.get("/campgrounds", function (req, res) {
 // Create route -- add new campground into database
 app.post("/campgrounds", function (req, res) {
     // res.send("You are on POST page !");
-    var name = req.body.name;
-    var image = req.body.image;
+    var name    = req.body.name;
+    var image   = req.body.image;
+    var desc    = req.body.description;
     var newCampground = {
         name: name,
+        description: desc,
         image: image
     };
 
@@ -79,6 +82,19 @@ app.get("/campgrounds/new", function (req, res) {
     res.render("new");
 });
 
+
+// Show route --shows the perticular campground with all and main information
+app.get("/campgrounds/:id", function (req, res) {
+    // res.send("This will be the SHOW page one DAy!");
+    // res.params.id
+    Campground.findById(req.params.id, function (err, foundCampground) {
+        if (err) {
+            console.log("Error while finding data by ID", err);
+        } else {
+            res.render("show", { campground : foundCampground});
+        }
+    });
+})
 app.listen(3000, function () {
     console.log("Yelpcamp has been started !");
 });
